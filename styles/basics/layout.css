@@ -1,0 +1,23 @@
+/* Main Layout */
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(16px, 1fr) minmax(auto, 1060px) minmax(16px, 1fr);
+}
+
+.main-layout>*:not(.full) {
+    grid-column: 2;
+}
+
+.main-layout>.full {
+    grid-column: 1/-1;
+}
+
+/* Editing Layout */
+.main-editing {
+    display: grid;
+    grid-template-columns: 80px 1fr 60px 1fr 80px;
+}
+
+.main-editing>.editing-panel {
+    grid-column: 2;
+}

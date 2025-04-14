@@ -8,20 +8,20 @@
     <title>Chart Maker</title>
 </head>
 
-<body>
-    <header class="main.header">
+<body class="main-layout">
+    <header class="main-header full flex space-between align-center">
         <h1>Graph Maker</h1>
-    </header>
-    <main class="main-content">
-        <nav class="main-navbar">
-            <ul>
-                <li>Create</li>
+        <nav class="main-nav">
+            <ul class="main-nav-list flex clean-list">
+                <li>Share</li>
                 <li>Downloads</li>
             </ul>
         </nav>
+    </header>
+    <main class="main-content">
         <section class="main-editing">
             <div class="editing-panel">
-                <input type="text" name="graph-name" id="graph-name">
+                <input type="text" name="graph-name" id="graph-name" placeholder="Graph Name">
                 <input type="color" name="column-color" id="column-color">
                 <input type="text" placeholder="Variable Name"> <input type="text" placeholder="value">
                 <input type="text" placeholder="Variable Name"> <input type="text" placeholder="value">

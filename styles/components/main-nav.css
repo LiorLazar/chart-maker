@@ -1,0 +1,8 @@
+.main-nav .main-nav-list {
+    margin: 10px;
+    gap: 50px;
+}
+
+.main-nav .main-nav-list a {
+    color: inherit;
+}

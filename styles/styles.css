@@ -8,6 +8,7 @@
 @import url('basics/layout.css');
 
 /* COMPONENTS */
+@import url('components/main-nav.css');
 
 /* MQ */
 @import url('setup/mq.css');
