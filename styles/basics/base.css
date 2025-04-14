@@ -14,7 +14,6 @@ body {
 
 canvas {
     background-color: white;
-    aspect-ratio: auto 1008 / 840;
     height: auto;
     width: 100%;
 }

@@ -72,3 +72,20 @@ function _createChart(theme, title, style, valueType, terms) {
     }
 
 }
+
+function drawCharts(gElCanvas) {
+    const barWidth = 50;
+    const barSpace = 25;
+
+    gCharts.forEach((chart, idx) => {
+        chart.x = (idx + 1) * (barWidth + barSpace);
+
+        chart.terms.forEach(term => {
+            const barHeight = term.value;
+            const barY = gElCanvas.height - barHeight;
+
+            gCtx.fillStyle = term.color;
+            gCtx.fillRect(chart.x, barY, barWidth, barHeight);
+        });
+    });
+}
