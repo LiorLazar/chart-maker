@@ -64,6 +64,7 @@ function _createCharts() {
 
 function _createChart(theme, title, style, valueType, terms) {
     return {
+        id: makeId(),
         theme,
         title,
         style,
@@ -73,19 +74,27 @@ function _createChart(theme, title, style, valueType, terms) {
 
 }
 
-function drawCharts(gElCanvas) {
-    const barWidth = 50;
-    const barSpace = 25;
+function drawChart(gElCanvas, chartId) {
+    const barWidth = 50
+    const barSpace = 25
+    const gCtx = gElCanvas.getContext('2d')
 
-    gCharts.forEach((chart, idx) => {
-        chart.x = (idx + 1) * (barWidth + barSpace);
+    const chart = getChartById(chartId)
+    if (!chart) return
 
-        chart.terms.forEach(term => {
-            const barHeight = term.value;
-            const barY = gElCanvas.height - barHeight;
+    let x = 0;
 
-            gCtx.fillStyle = term.color;
-            gCtx.fillRect(chart.x, barY, barWidth, barHeight);
-        });
+    chart.terms.forEach(term => {
+        const barHeight = term.value
+        const barY = gElCanvas.height - barHeight
+
+        gCtx.fillStyle = term.color
+        gCtx.fillRect(x, barY, barWidth, barHeight)
+
+        x += barWidth + barSpace
     });
+}
+
+function getChartById(chartId) {
+    return gCharts.find(chart => chart.id === chartId)
 }
