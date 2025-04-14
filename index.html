@@ -14,12 +14,13 @@
         <nav class="main-nav">
             <ul class="main-nav-list flex clean-list">
                 <li>Share</li>
-                <li>Gallery</li>
+                <li onclick="renderGallery()">My Charts</li>
                 <li>Downloads</li>
             </ul>
         </nav>
     </header>
     <main class="main-content">
+        <section class="gallery hidden"></section>
         <section class="main-editing">
             <div class="editing-panel">
                 <input type="text" name="graph-name" id="graph-name" placeholder="Graph Name">
@@ -59,5 +60,7 @@
 
     </footer>
 </body>
+<script src="js/services/chart.service.js"></script>
+<script src="js/controllers/gallery.controller.js"></script>
 
 </html>
