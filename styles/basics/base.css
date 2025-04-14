@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color: var(--clr-primary-1);
+    background-color: var(--clr-primary-base);
+}
+
+body {
+    margin: 0;
+    font-size: 0.875rem
+}
