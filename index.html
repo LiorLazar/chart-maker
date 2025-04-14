@@ -4,11 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Chart Maker</title>
 </head>
 
 <body>
+    <header class="main.header">
+        <h1>Graph Maker</h1>
+    </header>
+    <main class="main-content">
+        <nav class="main-navbar">
+            <ul>
+                <li>Create</li>
+                <li>Downloads</li>
+            </ul>
+        </nav>
+        <section class="main-editing">
+            <div class="editing-panel">
+                <input type="text" name="graph-name" id="graph-name">
+                <input type="color" name="column-color" id="column-color">
+                <input type="text" placeholder="Variable Name"> <input type="text" placeholder="value">
+                <input type="text" placeholder="Variable Name"> <input type="text" placeholder="value">
+                <div>Add Variable +</div>
+                <div class="type-picker">
+                    <ul>
+                        <li>%</li>
+                        <li>123</li>
+                    </ul>
+                    <select name="font-selector" id="font-selector">
+                        <option hidden>Select Font</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
 
+    </footer>
 </body>
 
 </html>
