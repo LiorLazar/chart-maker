@@ -21,3 +21,11 @@
 .main-editing>.editing-panel {
     grid-column: 2;
 }
+
+.main-editing>.canvas-preview {
+    grid-column: 3/5;
+}
+
+.canvas-actions {
+    grid-column: 5;
+}

@@ -11,3 +11,10 @@ body {
     margin: 0;
     font-size: 0.875rem
 }
+
+canvas {
+    background-color: white;
+    aspect-ratio: auto 1008 / 840;
+    height: auto;
+    width: 100%;
+}
