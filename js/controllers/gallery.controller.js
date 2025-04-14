@@ -16,15 +16,23 @@ function renderGallery() {
 
 function onChartSelect(chartId) {
     const chart = getChartById(chartId)
-    renderChartEditor(chart, chartId)
+    renderChartEditor(chartId)
 }
 
-function renderChartEditor(chart, chartId) {
+function renderChartEditor(chartId) {
     gElCanvas = document.querySelector('canvas')
 
-    const style = window.getComputedStyle(gElCanvas)
-    const canvasWidth = parseFloat(style.width)
-    const canvasHeight = parseFloat(style.height)
+    const parentWidth = gElCanvas.parentElement.offsetWidth
+    const parentHeight = gElCanvas.parentElement.offsetHeight
+
+    const aspectRatio = 16 / 9
+    let canvasWidth = parentWidth
+    let canvasHeight = parentWidth / aspectRatio
+
+    if (canvasHeight > parentHeight) {
+        canvasHeight = parentHeight
+        canvasWidth = parentHeight * aspectRatio
+    }
 
     gElCanvas.width = canvasWidth
     gElCanvas.height = canvasHeight
@@ -35,5 +43,4 @@ function renderChartEditor(chart, chartId) {
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
 
     drawChart(gElCanvas, chartId)
-
 }
