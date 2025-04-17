@@ -149,6 +149,11 @@ function getChartById(chartId) {
     return gCharts.find(chart => chart.id === chartId)
 }
 
-function addTerm(term) { }
+function addTerm(chartId, term) {
+    var chart = getChartById(chartId)
+    var terms = chart.terms
+    console.log('terms', terms)
+    terms.shift(term)
+}
 function updateTerm(idx, term) { }
 function removeTerm(idx) { }

@@ -3,6 +3,16 @@
 var gElCanvas
 var gCtx
 
+function renderActions(chartId) {
+    const chart = getChartById(chartId)
+    console.log(chart)
+    const elActions = document.querySelector('.editing-panel')
+    elActions.innerHTML = `
+        <button onclick="onAddTerm('${chart.id}')">Add Term</button>
+        <button>Update Term</button>
+        <button>Remove Term</button>`
+}
+
 function renderGallery() {
     const elGallery = document.querySelector('.gallery')
     elGallery.style.display = 'block'
@@ -17,6 +27,7 @@ function renderGallery() {
 function onChartSelect(chartId) {
     const chart = getChartById(chartId)
     renderChart(chartId)
+    renderActions(chartId)
 }
 
 function renderChart(chartId) {
@@ -45,15 +56,18 @@ function renderChart(chartId) {
     drawChart(gElCanvas, chartId)
 }
 
-function onAddTerm(term) {
-    addTerm(term)
-    renderChart()
+function onAddTerm(chartId) {
+    var label = prompt('Desired Label?')
+    var value = prompt('Desired Value?')
+    var color = prompt('Desired Color?')
+    addTerm(chartId, { label, value, color })
+    renderChart(chartId)
 }
 function onUpdateTerm(idx, term) {
     updateTerm(idx, term)
-    renderChart()
+    renderChart(chartId)
 }
 function omRemoveTerm(idx) {
     removeTerm(idx)
-    renderChart()
+    renderChart(chartId)
 }
