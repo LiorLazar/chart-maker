@@ -175,13 +175,17 @@ function updateTerm(chartId, termId, termProp, value) {
             break
     }
 }
-function removeTerm(idx) { }
+function removeTerm(chartId, termId) {
+    const chart = getChartById(chartId)
+    if (!chart) return
+    const terms = chart.terms
+    terms.splice(termId, 1)
+}
 
 function getTermById(chartId, termId) {
     const chart = getChartById(chartId)
     console.log(chart)
     if (!chart) return
     const terms = chart.terms
-    console.log(terms[termId])
     return terms[termId]
 }

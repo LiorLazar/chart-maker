@@ -10,7 +10,7 @@ function renderActions(chartId) {
     elActions.innerHTML = `
         <button onclick="onAddTerm('${chart.id}')">Add Term</button>
         <button onclick="onUpdateTerm('${chart.id}')">Update Term</button>
-        <button>Remove Term</button>`
+        <button onclick="omRemoveTerm('${chart.id}')">Remove Term</button>`
 }
 
 function renderGallery() {
@@ -109,7 +109,8 @@ function onUpdateTerm(chartId) {
     updateTerm(chartId, termId, termProp, termValue)
     renderChart(chartId)
 }
-function omRemoveTerm(idx) {
-    removeTerm(idx)
+function omRemoveTerm(chartId) {
+    const termId = prompt('What is the term ID to remove?')
+    removeTerm(chartId, termId)
     renderChart(chartId)
 }
