@@ -114,3 +114,10 @@ function omRemoveTerm(chartId) {
     removeTerm(chartId, termId)
     renderChart(chartId)
 }
+
+function onDownload() {
+    const elLink = document.getElementById('download-link')
+    const downloadContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = downloadContent
+    elLink.download = 'my-chart.jpg'
+}

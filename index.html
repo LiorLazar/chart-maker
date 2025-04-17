@@ -15,7 +15,6 @@
             <ul class="main-nav-list flex clean-list">
                 <li>Share</li>
                 <li onclick="renderGallery()">My Charts</li>
-                <li>Downloads</li>
             </ul>
         </nav>
     </header>
@@ -28,9 +27,9 @@
             <div class="canvas-preview flex align-center space-between">
                 <canvas></canvas>
                 <div class="canvas-actions">
-                    <button>Preview</button>
-                    <button>Download</button>
-                    <button>Add logo</button>
+                    <a id="download-link" href="#" download="my-chart.jpg">
+                        <button onclick="onDownload()">Download</button>
+                    </a>
                 </div>
                 <ul>
                     <li>Circles</li>
