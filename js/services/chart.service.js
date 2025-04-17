@@ -148,3 +148,7 @@ function drawChart(gElCanvas, chartId) {
 function getChartById(chartId) {
     return gCharts.find(chart => chart.id === chartId)
 }
+
+function addTerm(term) { }
+function updateTerm(idx, term) { }
+function removeTerm(idx) { }

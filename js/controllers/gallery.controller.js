@@ -16,10 +16,10 @@ function renderGallery() {
 
 function onChartSelect(chartId) {
     const chart = getChartById(chartId)
-    renderChartEditor(chartId)
+    renderChart(chartId)
 }
 
-function renderChartEditor(chartId) {
+function renderChart(chartId) {
     gElCanvas = document.querySelector('canvas')
 
     const parentWidth = gElCanvas.parentElement.offsetWidth
@@ -43,4 +43,17 @@ function renderChartEditor(chartId) {
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
 
     drawChart(gElCanvas, chartId)
+}
+
+function onAddTerm(term) {
+    addTerm(term)
+    renderChart()
+}
+function onUpdateTerm(idx, term) {
+    updateTerm(idx, term)
+    renderChart()
+}
+function omRemoveTerm(idx) {
+    removeTerm(idx)
+    renderChart()
 }
