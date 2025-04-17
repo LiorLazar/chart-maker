@@ -153,7 +153,7 @@ function addTerm(chartId, term) {
     var chart = getChartById(chartId)
     var terms = chart.terms
     console.log('terms', terms)
-    terms.shift(term)
+    terms.push(term)
 }
 function updateTerm(idx, term) { }
 function removeTerm(idx) { }

@@ -28,6 +28,7 @@ function onChartSelect(chartId) {
     const chart = getChartById(chartId)
     renderChart(chartId)
     renderActions(chartId)
+    renderTerms(chartId)
 }
 
 function renderChart(chartId) {
@@ -54,6 +55,38 @@ function renderChart(chartId) {
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
 
     drawChart(gElCanvas, chartId)
+}
+
+function renderTerms(chartId) {
+    const chart = getChartById(chartId)
+    const terms = chart.terms
+    const elTermsPanel = document.querySelector('.terms-panel')
+
+    var tableHTMLTxt = `
+        <table>
+            <thead>
+                <th>
+                    Term Name
+                </th>
+                <th>
+                    Term Value
+                </th>
+                <th>
+                    Term Color
+                </th>
+            </thead>
+        <tbody class="terms-content">
+        `
+    tableHTMLTxt += terms.map(term => `
+        <tr>
+            <td>${term.label}</td>
+            <td>${term.value}</td>
+            <td>${term.color}</td>
+        </tr>
+        `).join('')
+
+    tableHTMLTxt += '</tbody></table>'
+    elTermsPanel.innerHTML = tableHTMLTxt
 }
 
 function onAddTerm(chartId) {

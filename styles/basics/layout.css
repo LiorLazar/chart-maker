@@ -31,3 +31,7 @@
 .canvas-actions {
     grid-column: 4;
 }
+
+.main-editing>.terms-panel {
+    grid-column: 1;
+}
