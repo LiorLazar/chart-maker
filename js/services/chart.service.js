@@ -16,11 +16,13 @@ function _createCharts() {
             'precent/value',
             [
                 {
+                    id: 0,
                     label: 'Puk',
                     value: 50,
                     color: 'pink'
                 },
                 {
+                    id: 1,
                     label: 'Muk',
                     value: 50,
                     color: 'green'
@@ -150,10 +152,36 @@ function getChartById(chartId) {
 }
 
 function addTerm(chartId, term) {
-    var chart = getChartById(chartId)
-    var terms = chart.terms
-    console.log('terms', terms)
+    const chart = getChartById(chartId)
+    const terms = chart.terms
+    // console.log('terms', terms)
     terms.push(term)
 }
-function updateTerm(idx, term) { }
+function updateTerm(chartId, termId, termProp, value) {
+    const chart = getChartById(chartId)
+    // const terms = chart.terms
+    const term = getTermById(chartId, termId)
+    console.log(term)
+
+    switch (termProp.toLowerCase()) {
+        case 'name':
+            term.label = value
+            break
+        case 'value':
+            term.value = value
+            break
+        case 'color':
+            term.color = value
+            break
+    }
+}
 function removeTerm(idx) { }
+
+function getTermById(chartId, termId) {
+    const chart = getChartById(chartId)
+    console.log(chart)
+    if (!chart) return
+    const terms = chart.terms
+    console.log(terms[termId])
+    return terms[termId]
+}

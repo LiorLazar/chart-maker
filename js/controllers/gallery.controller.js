@@ -9,7 +9,7 @@ function renderActions(chartId) {
     const elActions = document.querySelector('.editing-panel')
     elActions.innerHTML = `
         <button onclick="onAddTerm('${chart.id}')">Add Term</button>
-        <button>Update Term</button>
+        <button onclick="onUpdateTerm('${chart.id}')">Update Term</button>
         <button>Remove Term</button>`
 }
 
@@ -55,6 +55,7 @@ function renderChart(chartId) {
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
 
     drawChart(gElCanvas, chartId)
+    renderTerms(chartId)
 }
 
 function renderTerms(chartId) {
@@ -65,6 +66,9 @@ function renderTerms(chartId) {
     var tableHTMLTxt = `
         <table>
             <thead>
+                <th>
+                   ID
+                </th>
                 <th>
                     Term Name
                 </th>
@@ -77,8 +81,9 @@ function renderTerms(chartId) {
             </thead>
         <tbody class="terms-content">
         `
-    tableHTMLTxt += terms.map(term => `
+    tableHTMLTxt += terms.map((term, idx) => `
         <tr>
+            <td>${idx}</td>
             <td>${term.label}</td>
             <td>${term.value}</td>
             <td>${term.color}</td>
@@ -90,14 +95,18 @@ function renderTerms(chartId) {
 }
 
 function onAddTerm(chartId) {
-    var label = prompt('Desired Label?')
-    var value = prompt('Desired Value?')
-    var color = prompt('Desired Color?')
+    const label = prompt('Desired Label?')
+    const value = prompt('Desired Value?')
+    const color = prompt('Desired Color?')
     addTerm(chartId, { label, value, color })
     renderChart(chartId)
+
 }
-function onUpdateTerm(idx, term) {
-    updateTerm(idx, term)
+function onUpdateTerm(chartId) {
+    const termProp = prompt('Which Term Property To Update?')
+    const termId = prompt('What is The Term ID?')
+    const termValue = prompt('What is the term value?')
+    updateTerm(chartId, termId, termProp, termValue)
     renderChart(chartId)
 }
 function omRemoveTerm(idx) {
