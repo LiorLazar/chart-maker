@@ -4,6 +4,10 @@ var gCharts
 _createCharts()
 
 function _createCharts() {
+    gCharts = loadFromStorage('charts')
+
+    if (gCharts && gCharts.length > 0) return
+
     gCharts = [
         _createChart(
             'rectangles',
@@ -62,6 +66,7 @@ function _createCharts() {
             ]
         )
     ]
+    _saveCharts()
 }
 
 function _createChart(theme, title, style, valueType, terms) {
@@ -156,6 +161,7 @@ function addTerm(chartId, term) {
     const terms = chart.terms
     // console.log('terms', terms)
     terms.push(term)
+    _saveCharts()
 }
 function updateTerm(chartId, termId, termProp, value) {
     const chart = getChartById(chartId)
@@ -174,12 +180,14 @@ function updateTerm(chartId, termId, termProp, value) {
             term.color = value
             break
     }
+    _saveCharts()
 }
 function removeTerm(chartId, termId) {
     const chart = getChartById(chartId)
     if (!chart) return
     const terms = chart.terms
     terms.splice(termId, 1)
+    _saveCharts()
 }
 
 function getTermById(chartId, termId) {
@@ -188,4 +196,8 @@ function getTermById(chartId, termId) {
     if (!chart) return
     const terms = chart.terms
     return terms[termId]
+}
+
+function _saveCharts() {
+    saveToStorage('charts', gCharts)
 }
