@@ -121,3 +121,21 @@ function onDownload() {
     elLink.href = downloadContent
     elLink.download = 'my-chart.jpg'
 }
+
+function onUploadChart(ev) {
+    ev.preventDefault()
+    const canvasData = gElCanvas.toDataURL('image/jpeg')
+
+    // After a succesful upload, allow the user to share on Facebook
+    function onSuccess(uploadedChart) {
+        const encodedUploadedChartUrl = encodeURIComponent(uploadedChart)
+        console.log('encodedUploadedImgUrl:', encodedUploadedChartUrl)
+        document.querySelector('.share-container').innerHTML = `
+        <a href="${uploadedChart}">BABA</a>
+        <p>Image url: ${uploadedChart}</p>
+        <button class="btn-facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedChartUrl}&t=${encodedUploadedChartUrl}')">
+           Share on Facebook  
+        </button>`
+    }
+    uploadChart(canvasData, onSuccess)
+}

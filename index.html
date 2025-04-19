@@ -13,7 +13,7 @@
         <h1>Graph Maker</h1>
         <nav class="main-nav">
             <ul class="main-nav-list flex clean-list">
-                <li>Share</li>
+                <li onclick="onUploadChart(event)">Share</li>
                 <li onclick="renderGallery()">My Charts</li>
             </ul>
         </nav>
@@ -33,6 +33,7 @@
                 </div>
             </div>
         </section>
+        <div class="share-container"></div>
     </main>
     <footer>
 
@@ -41,6 +42,7 @@
 <script src="js/services/storage.service.js"></script>
 <script src="js/services/util.service.js"></script>
 <script src="js/services/chart.service.js"></script>
+<script src="js/services/upload.service.js"></script>
 <script src="js/controllers/gallery.controller.js"></script>
 
 </html>
