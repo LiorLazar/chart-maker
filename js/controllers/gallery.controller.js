@@ -10,7 +10,8 @@ function renderActions(chartId) {
     elActions.innerHTML = `
         <button onclick="onAddTerm('${chart.id}')">Add Term</button>
         <button onclick="onUpdateTerm('${chart.id}')">Update Term</button>
-        <button onclick="omRemoveTerm('${chart.id}')">Remove Term</button>`
+        <button onclick="omRemoveTerm('${chart.id}')">Remove Term</button>
+        `
 }
 
 function renderGallery() {
@@ -92,6 +93,12 @@ function renderTerms(chartId) {
 
     tableHTMLTxt += '</tbody></table>'
     elTermsPanel.innerHTML = tableHTMLTxt
+    var elValueType = `<div>
+            <ul class="value-type flex clean-list">
+                <li onclick="onSetValueType(this,'${chartId}')">123</li>
+                <li onclick="onSetValueType(this,'${chartId}')">%</li>
+            </ul>`
+    elTermsPanel.innerHTML += elValueType
 }
 
 function onAddTerm(chartId) {
@@ -140,10 +147,17 @@ function onUploadChart(ev) {
     uploadChart(canvasData, onSuccess)
 }
 
-function onSetValueType(elType) {
-    if (elType.innerText === '123') return
-    if (elType.innerText === '%') {
-        const elTerm = document.querySelector('.terms-panel')
-        console.log(elTerm)
+function onSetValueType(elType, chartId) {
+    const terms = getTerms(chartId)
+    console.log('Original Terms:', terms)
+
+    for (let i = 0; i < terms.length; i++) {
+        if (elType.innerText === '123' && terms[i].value.includes('%')) terms[i].value = terms[i].value.replace('%', '')
+        else if (elType.innerText === '%' && !terms[i].value.includes('%')) terms[i].value += '%'
+        updateTerm(chartId, i, terms[i].label, terms[i].value);
     }
+
+    console.log('Updated Terms:', terms);
+    renderTerms(chartId)
+    renderChart(chartId)
 }

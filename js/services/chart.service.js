@@ -201,3 +201,9 @@ function getTermById(chartId, termId) {
 function _saveCharts() {
     saveToStorage('charts', gCharts)
 }
+
+function getTerms(chartId) {
+    const chart = getChartById(chartId)
+    if (!chart) return
+    return chart.terms
+}
