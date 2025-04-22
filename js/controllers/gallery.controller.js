@@ -139,3 +139,11 @@ function onUploadChart(ev) {
     }
     uploadChart(canvasData, onSuccess)
 }
+
+function onSetValueType(elType) {
+    if (elType.innerText === '123') return
+    if (elType.innerText === '%') {
+        const elTerm = document.querySelector('.terms-panel')
+        console.log(elTerm)
+    }
+}

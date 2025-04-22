@@ -9,6 +9,7 @@
 
 /* COMPONENTS */
 @import url('components/main-nav.css');
+@import url('components/value-type.css');
 
 /* MQ */
 @import url('setup/mq.css');
