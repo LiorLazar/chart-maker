@@ -152,9 +152,9 @@ function onSetValueType(elType, chartId) {
     console.log('Original Terms:', terms)
 
     for (let i = 0; i < terms.length; i++) {
-        if (elType.innerText === '123' && terms[i].value.includes('%')) terms[i].value = terms[i].value.replace('%', '')
-        else if (elType.innerText === '%' && !terms[i].value.includes('%')) terms[i].value += '%'
-        updateTerm(chartId, i, terms[i].label, terms[i].value);
+        if (elType.innerText === '123' && String(terms[i].value).includes('%')) terms[i].value = terms[i].value.replace('%', '')
+        else if (elType.innerText === '%' && !String(terms[i].value).includes('%')) terms[i].value += '%'
+        updateTerm(chartId, i, terms[i].label, String(terms[i].value));
     }
 
     console.log('Updated Terms:', terms);
